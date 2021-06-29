@@ -1,0 +1,29 @@
+PODS:
+  - clearsale_fingerprint (0.0.1):
+    - CSBehavior (= 3.0.1)
+    - Flutter
+  - CSBehavior (3.0.1)
+  - Flutter (1.0.0)
+
+DEPENDENCIES:
+  - clearsale_fingerprint (from `.symlinks/plugins/clearsale_fingerprint/ios`)
+  - Flutter (from `Flutter`)
+
+SPEC REPOS:
+  "https://csbehaviorsdk:uflrjnegvdrcxx56tyzrtqqbzgx2hphqzsbl7jurtjlisemxoyrq@dev.azure.com/vstscs/Produtos-Agile/_git/BehaviorAnalytics.SDK.IOS.Specs":
+    - CSBehavior
+
+EXTERNAL SOURCES:
+  clearsale_fingerprint:
+    :path: ".symlinks/plugins/clearsale_fingerprint/ios"
+  Flutter:
+    :path: Flutter
+
+SPEC CHECKSUMS:
+  clearsale_fingerprint: 038e79d29d242f3a6026f301725a1c7d4f63c6a8
+  CSBehavior: 2329818ab396724b0b91362c7abced5a6a849deb
+  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
+
+PODFILE CHECKSUM: a7629d04e50d4e0a01b664dfad4556b1bf222bec
+
+COCOAPODS: 1.10.1

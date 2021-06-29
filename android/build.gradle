@@ -1,0 +1,80 @@
+group 'com.br.dblinks.clearsale_fingerprint'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    ext.kotlin_version = '1.4.31'
+
+    def clearsalePropertiesFile = new File(rootProject.projectDir, "clearsale.properties")
+    def properties = new Properties()
+
+    assert clearsalePropertiesFile.exists(), "clearsale.properties doesn't exists"
+    clearsalePropertiesFile.withReader("UTF-8") { reader -> properties.load(reader) }
+
+    def clearsaleToken = properties.getProperty("clearsaleToken")
+    assert clearsaleToken != null && clearsaleToken.length() > 0, "clearsaleToken not set in clearsale.properties"
+
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+            url 'https://pkgs.dev.azure.com/vstscs/Produtos-Agile/_packaging/BehaviorAnalytics.SDK/maven/v1'
+            name 'BehaviorAnalytics.SDK.Android'
+            credentials {
+                username "vstscs"
+                password clearsaleToken
+            }
+        }
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.1.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+rootProject.allprojects {
+
+    def clearsalePropertiesFile = new File(rootProject.projectDir, "clearsale.properties")
+    def properties = new Properties()
+
+    assert clearsalePropertiesFile.exists(), "clearsale.properties doesn't exists"
+    clearsalePropertiesFile.withReader("UTF-8") { reader -> properties.load(reader) }
+
+    def clearsaleToken = properties.getProperty("clearsaleToken")
+    assert clearsaleToken != null && clearsaleToken.length() > 0, "clearsaleToken not set in clearsale.properties"
+
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+            url 'https://pkgs.dev.azure.com/vstscs/Produtos-Agile/_packaging/BehaviorAnalytics.SDK/maven/v1'
+            name 'BehaviorAnalytics.SDK.Android'
+            credentials {
+                username "vstscs"
+                password clearsaleToken
+            }
+        }
+    }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion 30
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+    defaultConfig {
+        minSdkVersion 16
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.google.android.gms:play-services-ads:20.1.0'
+    api 'com.google.code.gson:gson:2.8.6'
+    implementation 'sale.clear.behavior:sdk-behavior:3.0.2'
+    api 'com.google.android.gms:play-services-location:18.0.0'
+}
